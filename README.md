@@ -10,7 +10,6 @@
 **MirrorLab** is an open-source, browser-based professional photo editor capable of RAW processing, advanced color grading, and non-destructive editing. Built with modern web technologies, it aims to be a lightweight alternative to Lightroom Classic.
 
 ![MirrorLab Interface](./screenshots/mirrorlab_ui.png) 
-*(Note: Screenshot to be added after first run)*
 
 ## ✨ Features
 
