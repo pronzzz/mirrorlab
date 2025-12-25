@@ -1,46 +1,39 @@
-# Contributing to MirrorLab
+# Contributing to MirrorLab 📸
 
-We love your input! We want to make contributing to MirrorLab as easy and transparent as possible, whether it's:
+First off, thank you for considering contributing to MirrorLab! It's people like you who make open-source tools great.
 
-- Reporting a bug
-- Discussing the current state of the code
-- Submitting a fix
-- Proposing new features
-- Becoming a maintainer
+## 🔍 How Can I Contribute?
 
-## We Dovelop with Github
+### Reporting Bugs
+- Use the GitHub [Issues](https://github.com/pronzzz/mirrorlab/issues) tab.
+- Include your **browser version**, **OS**, and a **sample RAW file** if the bug is related to image decoding.
 
-We use github to host code, to track issues and feature requests, and to accept pull requests.
+### Suggesting Enhancements
+- Check the [ROADMAP.md](./ROADMAP.md) first to see if your idea is already planned.
+- Open an issue labeled `enhancement` to discuss the feature before building it.
 
-## Pull Request Process
+### Pull Requests
+1. Fork the repo and create your branch from `main`.
+2. If you've added code that should be tested, add tests!
+3. Ensure the project builds locally: `npm run build`.
+4. Update the documentation if you've changed the UI or workflow.
 
-1.  Fork the repo and create your branch from `main`.
-2.  If you've added code that should be tested, add tests.
-3.  If you've changed APIs, update the documentation.
-4.  Ensure the test suite passes.
-5.  Make sure your code lints.
-6.  Issue that pull request!
+## 🛠️ Technical Guidelines
 
-## Any contributions you make will be under the MIT Software License
+### Performance is Key
+MirrorLab processes high-resolution images in the browser. When contributing:
+- **Avoid unnecessary re-renders:** Use `React.memo` or `useMemo` for heavy UI components like the Curve Editor.
+- **Canvas Operations:** Keep heavy loops out of the main thread where possible. We are looking to move core math to Web Workers or WASM.
 
-In short, when you submit code changes, your submissions are understood to be under the same [MIT License](LICENSE) that covers the project. Feel free to contact the maintainers if that's a concern.
+### Coding Style
+- **TypeScript:** We use strict mode. Avoid `any`.
+- **Styling:** Use TailwindCSS for all UI components.
+- **Icons:** Use Lucide-React.
 
-## Report bugs using Github's [issue tracker](https://github.com/pronzzz/mirrorlab/issues)
+## 🧪 Development Setup
+```bash
+# Install dependencies
+npm install
 
-We use GitHub issues to track public bugs. Report a bug by opening a new issue; it's that easy!
-
-## Write bug reports with detail, background, and sample code
-
-**Great Bug Reports** tend to have:
-
-- A quick summary and/or background
-- Steps to reproduce
-    - Be specific!
-    - Give sample code if you can.
-- What you expected would happen
-- What actually happened
-- Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
-
-## License
-
-By contributing, you agree that your contributions will be licensed under its MIT License.
+# Run in development mode
+npm run dev
