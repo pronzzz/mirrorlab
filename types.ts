@@ -42,7 +42,19 @@ export interface Adjustments {
   vignette: number;
   grain: number;
   hsl: HSLParams;
+  colorGrading: ColorGrading;
   curve: CurveState;
+}
+
+export interface ColorGrading {
+  shadows: {
+    hue: number;
+    saturation: number;
+  };
+  highlights: {
+    hue: number;
+    saturation: number;
+  };
 }
 
 export interface Preset {
@@ -66,6 +78,7 @@ export type Action =
   | { type: 'SET_IMAGE'; payload: { src: string; filename: string } }
   | { type: 'UPDATE_ADJUSTMENT'; payload: Partial<Adjustments> }
   | { type: 'UPDATE_HSL'; payload: { channel: keyof HSLParams; params: Partial<HSLChannel> } }
+  | { type: 'UPDATE_COLOR_GRADING'; payload: { region: 'shadows' | 'highlights'; params: { hue?: number; saturation?: number } } }
   | { type: 'UPDATE_CURVE'; payload: { channel: keyof CurveState; points: Point[] } | CurveState }
   | { type: 'APPLY_PRESET'; payload: Adjustments }
   | { type: 'SAVE_PRESET'; payload: Preset }

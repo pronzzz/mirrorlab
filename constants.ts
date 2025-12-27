@@ -39,6 +39,10 @@ export const INITIAL_ADJUSTMENTS: Adjustments = {
     purple: { hue: 0, saturation: 0, luminance: 0 },
     magenta: { hue: 0, saturation: 0, luminance: 0 },
   },
+  colorGrading: {
+    shadows: { hue: 0, saturation: 0 },
+    highlights: { hue: 0, saturation: 0 }
+  },
   curve: DEFAULT_CURVE,
 };
 

@@ -47,6 +47,24 @@ function reducer(state: EditorState, action: Action): EditorState {
         historyIndex: newHistory.length - 1,
       };
     }
+    case 'UPDATE_COLOR_GRADING': {
+      const newColorGrading = {
+        ...state.adjustments.colorGrading,
+        [action.payload.region]: {
+          ...state.adjustments.colorGrading[action.payload.region],
+          ...action.payload.params
+        }
+      };
+      const newAdj = { ...state.adjustments, colorGrading: newColorGrading };
+      const newHistory = state.history.slice(0, state.historyIndex + 1);
+      newHistory.push(newAdj);
+      return {
+        ...state,
+        adjustments: newAdj,
+        history: newHistory,
+        historyIndex: newHistory.length - 1,
+      };
+    }
     case 'UPDATE_CURVE': {
       let newCurve = state.adjustments.curve;
 

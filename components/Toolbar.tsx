@@ -191,7 +191,7 @@ const Toolbar: React.FC = () => {
           )}
         </div>
       </div>
-    </header>
+    </header >
   );
 };
 

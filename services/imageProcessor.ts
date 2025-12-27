@@ -219,6 +219,36 @@ export const processImage = (
       r = rgb[0]; g = rgb[1]; b = rgb[2];
     }
 
+    // Color Grading (Split Toning)
+    const cg = adj.colorGrading;
+    if (cg.shadows.saturation !== 0 || cg.highlights.saturation !== 0) {
+      const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+
+      if (cg.shadows.saturation !== 0) {
+        let sHue = cg.shadows.hue / 360;
+        while (sHue < 0) sHue += 1;
+        const sSat = cg.shadows.saturation / 100;
+        const sColor = hslToRgb(sHue, 1, 0.5);
+        const weight = Math.pow(Math.max(0, 1 - lum), 2) * sSat; // Square for smoother falloff
+
+        r = r * (1 - weight) + sColor[0] * weight;
+        g = g * (1 - weight) + sColor[1] * weight;
+        b = b * (1 - weight) + sColor[2] * weight;
+      }
+
+      if (cg.highlights.saturation !== 0) {
+        let hHue = cg.highlights.hue / 360;
+        while (hHue < 0) hHue += 1;
+        const hSat = cg.highlights.saturation / 100;
+        const hColor = hslToRgb(hHue, 1, 0.5);
+        const weight = Math.pow(Math.max(0, lum), 2) * hSat;
+
+        r = r * (1 - weight) + hColor[0] * weight;
+        g = g * (1 - weight) + hColor[1] * weight;
+        b = b * (1 - weight) + hColor[2] * weight;
+      }
+    }
+
     // Vignette
     if (adj.vignette !== 0) {
       const idx = i / 4;
