@@ -13,14 +13,20 @@ const AppContent = () => {
       <Toolbar />
       <div className="flex flex-col md:flex-row flex-1 overflow-hidden relative">
         {/* On mobile, only show SidebarLeft if activeTab is 'presets' */}
-        <div className={`${activeTab === 'presets' ? 'flex' : 'hidden'} md:flex h-full md:h-auto w-full md:w-auto z-20 absolute md:static inset-0 bg-black/90 md:bg-transparent`}>
+        {/* Changed from inset-0 to bottom-sheet style layout on mobile */}
+        <div
+          className={`${activeTab === 'presets' ? 'flex' : 'hidden'} md:flex h-[50vh] md:h-auto w-full md:w-auto z-20 absolute md:static bottom-0 left-0 right-0 border-t border-white/10 md:border-t-0 bg-gray-900/95 backdrop-blur-xl md:bg-transparent shadow-2xl md:shadow-none transition-transform duration-300 ease-in-out`}
+        >
           <SidebarLeft />
         </div>
 
         <MainCanvas />
 
         {/* On mobile, only show SidebarRight if activeTab is 'adjust' */}
-        <div className={`${activeTab === 'adjust' ? 'flex' : 'hidden'} md:flex h-full md:h-auto w-full md:w-auto z-20 absolute md:static inset-0 bg-black/90 md:bg-transparent justify-end`}>
+        {/* Changed from inset-0 to bottom-sheet style layout on mobile */}
+        <div
+          className={`${activeTab === 'adjust' ? 'flex' : 'hidden'} md:flex h-[50vh] md:h-auto w-full md:w-auto z-20 absolute md:static bottom-0 left-0 right-0 border-t border-white/10 md:border-t-0 bg-gray-900/95 backdrop-blur-xl md:bg-transparent justify-end shadow-2xl md:shadow-none transition-transform duration-300 ease-in-out`}
+        >
           <SidebarRight />
         </div>
       </div>
