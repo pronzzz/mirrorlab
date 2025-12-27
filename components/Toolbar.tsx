@@ -78,9 +78,7 @@ const Toolbar: React.FC = () => {
   return (
     <header className="h-14 glass-panel border-b border-white/10 flex items-center justify-between px-4 z-30 relative">
       <div className="flex items-center gap-4">
-        <div className="flex items-center">
-          <img src="/logo.png" alt="MirrorLab" className="h-8 object-contain" />
-        </div>
+        <img src="/logo.png" alt="MirrorLab" className="h-8 object-contain" />
         <div className="h-6 w-px bg-white/10 mx-2"></div>
         <button
           onClick={() => fileInputRef.current?.click()}
