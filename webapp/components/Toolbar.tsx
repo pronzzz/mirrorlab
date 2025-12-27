@@ -87,7 +87,7 @@ const Toolbar: React.FC = () => {
           className="text-sm font-medium hover:text-white text-gray-400 transition-colors flex items-center gap-2"
         >
           <FileType size={16} />
-          Import
+          <span className="hidden md:inline">Import</span>
         </button>
         <input
           type="file"
@@ -122,10 +122,10 @@ const Toolbar: React.FC = () => {
         <div className="relative">
           <button
             onClick={() => setShowExportOptions(!showExportOptions)}
-            className="bg-blue-600 hover:bg-blue-500 text-white text-sm px-4 py-1.5 rounded-md font-medium shadow-lg shadow-blue-500/20 transition-all border border-blue-400/20 flex items-center gap-2"
+            className="bg-blue-600 hover:bg-blue-500 text-white text-sm px-3 md:px-4 py-1.5 rounded-md font-medium shadow-lg shadow-blue-500/20 transition-all border border-blue-400/20 flex items-center gap-2"
           >
             <Download size={16} />
-            Export
+            <span className="hidden md:inline">Export</span>
             <ChevronDown size={14} className={`transition-transform ${showExportOptions ? 'rotate-180' : ''}`} />
           </button>
 
