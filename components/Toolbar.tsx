@@ -76,17 +76,17 @@ const Toolbar: React.FC = () => {
   };
 
   return (
-    <header className="h-14 glass-panel border-b border-white/10 flex items-center justify-between px-4 z-30 relative">
-      <div className="flex items-center gap-4">
-        <div className="font-bold text-lg tracking-tight bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
+    <header className="h-16 flex items-center justify-between px-6 z-30 relative bg-background border-b border-white/5 shadow-lg">
+      <div className="flex items-center gap-6">
+        <div className="font-bold text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-highlight to-accent animate-fade-in">
           MirrorLab
         </div>
-        <div className="h-6 w-px bg-white/10 mx-2"></div>
+        <div className="h-8 w-px bg-surface mx-2 neumorphic-inset"></div>
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="text-sm font-medium hover:text-white text-gray-400 transition-colors flex items-center gap-2"
+          className="neumorphic-btn px-4 py-2 text-sm font-medium text-gray-400 hover:text-highlight flex items-center gap-2 group"
         >
-          <FileType size={16} />
+          <FileType size={18} className="group-hover:text-accent transition-colors" />
           <span className="hidden md:inline">Import</span>
         </button>
         <input
@@ -98,61 +98,60 @@ const Toolbar: React.FC = () => {
         />
       </div>
 
-      <div className="flex items-center gap-2">
-        <div className="flex bg-black/30 rounded-lg p-1 border border-white/5">
+      <div className="flex items-center gap-4">
+        <div className="flex bg-surface rounded-xl p-1.5 neumorphic-inset items-center gap-1">
           <button
             onClick={() => dispatch({ type: 'UNDO' })}
             disabled={state.historyIndex <= 0}
-            className="p-1.5 hover:bg-white/10 rounded disabled:opacity-30 transition-colors"
+            className="p-2 hover:text-highlight rounded-lg disabled:opacity-30 transition-colors disabled:cursor-not-allowed"
             title="Undo"
           >
-            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
           </button>
           <button
             onClick={() => dispatch({ type: 'REDO' })}
             disabled={state.historyIndex >= state.history.length - 1}
-            className="p-1.5 hover:bg-white/10 rounded disabled:opacity-30 transition-colors"
+            className="p-2 hover:text-highlight rounded-lg disabled:opacity-30 transition-colors disabled:cursor-not-allowed"
             title="Redo"
           >
-            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10h-10a8 8 0 00-8 8v2M21 10l-6 6m6-6l-6-6" /></svg>
           </button>
         </div>
-        <div className="h-6 w-px bg-white/10 mx-2"></div>
 
         <div className="relative">
           <button
             onClick={() => setShowExportOptions(!showExportOptions)}
-            className="bg-blue-600 hover:bg-blue-500 text-white text-sm px-3 md:px-4 py-1.5 rounded-md font-medium shadow-lg shadow-blue-500/20 transition-all border border-blue-400/20 flex items-center gap-2"
+            className={`neumorphic-btn px-5 py-2 text-sm font-bold flex items-center gap-2 ${showExportOptions ? 'text-highlight shadow-inner' : 'text-primary'}`}
           >
-            <Download size={16} />
+            <Download size={18} />
             <span className="hidden md:inline">Export</span>
-            <ChevronDown size={14} className={`transition-transform ${showExportOptions ? 'rotate-180' : ''}`} />
+            <ChevronDown size={14} className={`transition-transform duration-300 ${showExportOptions ? 'rotate-180' : ''}`} />
           </button>
 
           {showExportOptions && (
-            <div className="absolute top-full right-0 mt-2 w-72 bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl p-4 z-50 animate-in fade-in zoom-in duration-200">
-              <div className="space-y-4">
+            <div className="absolute top-full right-0 mt-4 w-80 bg-surface neumorphic border border-white/5 p-5 z-50 animate-scale-in origin-top-right">
+              <div className="space-y-5">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1.5 font-semibold">Filename</label>
+                  <label className="block text-[10px] uppercase tracking-widest text-gray-500 mb-2 font-bold ml-1">Filename</label>
                   <input
                     type="text"
                     value={exportName}
                     onChange={(e) => setExportName(e.target.value)}
                     placeholder="Enter filename..."
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full bg-background neumorphic-inset px-4 py-3 text-sm text-text focus:outline-none focus:ring-1 focus:ring-accent/50 transition-all rounded-xl placeholder:text-gray-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-500 mb-1.5 font-semibold">Format</label>
-                  <div className="grid grid-cols-3 gap-2">
+                  <label className="block text-[10px] uppercase tracking-widest text-gray-500 mb-2 font-bold ml-1">Format</label>
+                  <div className="grid grid-cols-3 gap-3">
                     {(['image/png', 'image/jpeg', 'image/webp'] as const).map((format) => (
                       <button
                         key={format}
                         onClick={() => setExportFormat(format)}
-                        className={`py-1.5 rounded-lg text-xs font-medium border transition-all ${exportFormat === format
-                          ? 'bg-blue-600 border-blue-500 text-white'
-                          : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                        className={`py-2 rounded-lg text-xs font-bold transition-all duration-200 ${exportFormat === format
+                          ? 'neumorphic-btn active text-highlight border-accent/20'
+                          : 'neumorphic-btn text-gray-500 hover:text-gray-300'
                           }`}
                       >
                         {format.split('/')[1].toUpperCase()}
@@ -162,10 +161,10 @@ const Toolbar: React.FC = () => {
                 </div>
 
                 {(exportFormat === 'image/jpeg' || exportFormat === 'image/webp') && (
-                  <div>
-                    <div className="flex justify-between mb-1.5">
-                      <label className="text-[10px] uppercase tracking-wider text-gray-500 font-semibold">Quality</label>
-                      <span className="text-[10px] text-blue-400 font-medium">{Math.round(quality * 100)}%</span>
+                  <div className="animate-fade-in">
+                    <div className="flex justify-between mb-2 ml-1">
+                      <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Quality</label>
+                      <span className="text-xs text-highlight font-mono font-bold">{Math.round(quality * 100)}%</span>
                     </div>
                     <input
                       type="range"
@@ -174,17 +173,17 @@ const Toolbar: React.FC = () => {
                       step="0.05"
                       value={quality}
                       onChange={(e) => setQuality(parseFloat(e.target.value))}
-                      className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                      className="w-full h-2 bg-background rounded-lg appearance-none cursor-pointer accent-accent neumorphic-inset p-[2px]"
                     />
                   </div>
                 )}
 
                 <button
                   onClick={handleExport}
-                  className="w-full bg-blue-600 hover:bg-blue-500 text-white text-sm py-2.5 rounded-lg font-bold shadow-lg shadow-blue-500/20 transition-all flex items-center justify-center gap-2 mt-2"
+                  className="w-full neumorphic-btn py-3 text-sm font-bold text-highlight hover:text-accent transition-all flex items-center justify-center gap-2 mt-2 group"
                 >
-                  <Download size={16} />
-                  Download
+                  <Download size={18} className="group-hover:scale-110 transition-transform" />
+                  Download Image
                 </button>
               </div>
             </div>

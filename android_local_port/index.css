@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-background text-text overflow-hidden;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #333333;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #643173;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7d5ba6;
+}
+
+/* Neumorphism Utilities */
+.neumorphic {
+    background: #333333;
+    box-shadow: 5px 5px 10px #2b2b2b,
+        -5px -5px 10px #3b3b3b;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.neumorphic-inset {
+    background: #333333;
+    box-shadow: inset 5px 5px 10px #2b2b2b,
+        inset -5px -5px 10px #3b3b3b;
+    border-radius: 12px;
+}
+
+.neumorphic-btn {
+    background: #333333;
+    box-shadow: 4px 4px 8px #2b2b2b,
+        -4px -4px 8px #3b3b3b;
+    color: #e0e0e0;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.neumorphic-btn:hover {
+    box-shadow: 6px 6px 12px #2b2b2b,
+        -6px -6px 12px #3b3b3b;
+    color: #89ce94;
+    transform: translateY(-1px);
+}
+
+.neumorphic-btn:active,
+.neumorphic-btn.active {
+    box-shadow: inset 4px 4px 8px #2b2b2b,
+        inset -4px -4px 8px #3b3b3b;
+    color: #86a59c;
+    transform: translateY(1px);
+}
+
+/* Glass Effect (Compatible overlay) */
+.glass-panel {
+    background: rgba(51, 51, 51, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* New Glassmorphism Utility */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
