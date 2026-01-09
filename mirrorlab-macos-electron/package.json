@@ -1,0 +1,33 @@
+{
+  "name": "mirrorlab-desktop",
+  "productName": "MirrorLab",
+  "version": "1.0.0",
+  "description": "MirrorLab Desktop Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [],
+  "author": "MirrorLab",
+  "license": "ISC",
+  "build": {
+    "appId": "com.mirrorlab.desktop",
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js"
+    ],
+    "directories": {
+      "output": "dist-electron"
+    }
+  },
+  "devDependencies": {
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8"
+  }
+}
