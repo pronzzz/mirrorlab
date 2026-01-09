@@ -1,0 +1,38 @@
+{
+    "name": "mirrorlab-windows",
+    "productName": "MirrorLab",
+    "version": "1.0.0",
+    "description": "MirrorLab Desktop Application for Windows",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "dist": "electron-builder",
+        "pack": "electron-builder --dir"
+    },
+    "author": "MirrorLab",
+    "license": "ISC",
+    "build": {
+        "appId": "com.mirrorlab.desktop.win",
+        "win": {
+            "target": [
+                "nsis",
+                "portable"
+            ]
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        },
+        "files": [
+            "dist/**/*",
+            "main.js"
+        ],
+        "directories": {
+            "output": "dist-electron"
+        }
+    },
+    "devDependencies": {
+        "electron": "^34.2.0",
+        "electron-builder": "^25.1.8"
+    }
+}

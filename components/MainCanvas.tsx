@@ -72,6 +72,59 @@ const MainCanvas: React.FC = () => {
     return () => cancelAnimationFrame(animationId);
   }, [originalImageData, state.adjustments]);
 
+  // Measure container for "contain" logic
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Initial measure
+    const measure = () => {
+      if (containerRef.current) {
+        setContainerSize({
+          width: containerRef.current.clientWidth,
+          height: containerRef.current.clientHeight
+        });
+      }
+    };
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Calculate display size (object-fit: contain logic)
+  const getDisplayDimensions = () => {
+    if (dimensions.width === 0 || dimensions.height === 0 || containerSize.width === 0) {
+      return { width: 'auto', height: 'auto' }; // Fallback
+    }
+
+    const PADDING = 0.9; // 90%
+    const maxWidth = containerSize.width * PADDING;
+    const maxHeight = containerSize.height * PADDING;
+
+    const imgRatio = dimensions.width / dimensions.height;
+    const containerRatio = maxWidth / maxHeight;
+
+    let targetWidth, targetHeight;
+
+    if (imgRatio > containerRatio) {
+      // Image is wider than container (relative to height)
+      targetWidth = maxWidth;
+      targetHeight = maxWidth / imgRatio;
+    } else {
+      // Image is taller
+      targetHeight = maxHeight;
+      targetWidth = targetHeight * imgRatio;
+    }
+
+    return { width: `${targetWidth}px`, height: `${targetHeight}px` };
+  };
+
+  const displayStyle = getDisplayDimensions();
+
   // Handle Zoom/Pan CSS transform (Simplification for demo)
   const scale = state.zoom;
 
@@ -97,11 +150,10 @@ const MainCanvas: React.FC = () => {
       className="flex-1 relative overflow-hidden flex items-center justify-center bg-background neumorphic-inset shadow-inner m-2 rounded-2xl border border-white/5"
     >
       <div
-        className="relative shadow-2xl transition-transform duration-75 ease-out rounded-lg overflow-hidden border border-white/10"
+        className="relative shadow-2xl transition-transform duration-200 ease-out rounded-lg overflow-hidden border border-white/10"
         style={{
-          aspectRatio: `${dimensions.width} / ${dimensions.height}`,
-          maxWidth: '90%',
-          maxHeight: '90%',
+          width: displayStyle.width,
+          height: displayStyle.height,
           transform: `scale(${scale})`,
         }}
       >

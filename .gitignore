@@ -1,5 +1,5 @@
 # Logs
-logs
+**/logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,18 +7,75 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+**/node_modules/
+**/jspm_packages/
+
+# Build artifacts
+**/dist/
+**/dist-ssr/
+**/dist-electron/
+**/build/
+**/bin/
+**/obj/
+**/out/
+
+# Android specific
+**/.gradle/
+**/local.properties
+**/*.jks
+**/*.keystore
+**/*.p12
+**/*.dm
+**/capt-generated/
+**/.externalNativeBuild
+**/.cxx
+**/android/app/release/
+**/android/app/debug/
+**/android/local.properties
+**/android/gradle.properties
+
+# Inspection and lint reports
+**/android/*.xml
+**/android/*.html
+
+# OS metadata
+**/.DS_Store
+**/.DS_Store?
+**/._*
+**/.Spotlight-V100
+**/.Trashes
+**/ehthumbs.db
+**/Thumbs.db
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+**/.vscode/*
+!**/.vscode/extensions.json
+**/.idea/
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw?
+**/*.iml
+
+# Environment and secrets
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+**/*.secret
+**/credentials.json
+**/google-services.json
+
+# Large binaries
+**/*.dmg
+**/*.exe
+**/*.pkg
+**/*.deb
+**/*.rpm
+**/*.zip
+**/*.tar.gz
+**/*.iso
+**/*.app
