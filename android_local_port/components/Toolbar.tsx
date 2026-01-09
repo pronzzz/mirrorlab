@@ -76,7 +76,7 @@ const Toolbar: React.FC = () => {
   };
 
   return (
-    <header className="h-16 flex items-center justify-between px-6 z-30 relative bg-background border-b border-white/5 shadow-lg">
+    <header className="h-16 flex items-center justify-between px-6 z-30 relative glass-panel border-b border-white/5 shadow-lg">
       <div className="flex items-center gap-6">
         <div className="font-bold text-xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-highlight to-accent animate-fade-in">
           MirrorLab

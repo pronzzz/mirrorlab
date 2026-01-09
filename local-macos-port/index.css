@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glassmorphism Utilities */
+@layer components {
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/10 shadow-lg;
+    background: rgba(51, 51, 51, 0.6); /* Fallback/Base */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-btn {
+    @apply px-4 py-2 rounded-lg transition-all duration-300;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+  }
+
+  .glass-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  /* Keep legacy neumorphic classes for compatibility, or update components to use glass-panel */
+  .neumorphic {
+    @apply glass-panel rounded-xl;
+    box-shadow: none; /* Override neumorphic shadow */
+  }
+
+  .neumorphic-inset {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
+    border-radius: 12px;
+  }
+}
+
+body {
+  @apply bg-background text-text overflow-hidden;
+  /* macOS-like wallpaper feel or gradient could go here */
+  background: radial-gradient(circle at 50% 50%, #4a2c52 0%, #333333 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.3);
+}

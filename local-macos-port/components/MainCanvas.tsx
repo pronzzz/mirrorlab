@@ -77,15 +77,10 @@ const MainCanvas: React.FC = () => {
 
   if (!state.imageSrc) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-background m-2 rounded-2xl neumorphic-inset border border-white/5">
-        <div className="text-center p-8 rounded-2xl neumorphic border border-white/5 animate-scale-in">
-          <div className="mb-4 text-accent/50 flex justify-center">
-            <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <p className="mb-2 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-highlight to-accent uppercase tracking-widest">No Image Loaded</p>
-          <p className="text-sm text-gray-400 font-medium">Drag and drop or click Import to start</p>
+      <div className="flex-1 flex items-center justify-center bg-black/50 text-neutral-500">
+        <div className="text-center">
+          <p className="mb-2 text-lg">No image loaded</p>
+          <p className="text-sm opacity-50">Drag and drop or click Import</p>
         </div>
       </div>
     );
@@ -94,10 +89,10 @@ const MainCanvas: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex-1 relative overflow-hidden flex items-center justify-center bg-background neumorphic-inset shadow-inner m-2 rounded-2xl border border-white/5"
+      className="flex-1 relative overflow-hidden flex items-center justify-center bg-[#050505] shadow-inner"
     >
       <div
-        className="relative shadow-2xl transition-transform duration-75 ease-out rounded-lg overflow-hidden border border-white/10"
+        className="relative shadow-2xl transition-transform duration-75 ease-out"
         style={{
           aspectRatio: `${dimensions.width} / ${dimensions.height}`,
           maxWidth: '90%',
