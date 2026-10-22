@@ -1,0 +1,31 @@
+[workspace]
+resolver = "2"
+members = ["crates/core", "crates/cli", "app", "src-tauri"]
+# `cargo build` / `cargo test` at the root only touch the native crates.
+# The web UI is built with Trunk, the shell with `cargo tauri`.
+default-members = ["crates/core", "crates/cli"]
+
+[workspace.package]
+version = "2.0.0"
+edition = "2021"
+license = "MIT"
+authors = ["Pranav Dwivedi"]
+repository = "https://github.com/pronzzz/mirrorlab"
+rust-version = "1.85"
+
+[workspace.dependencies]
+mirror-core = { path = "crates/core", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+
+# Small, fast wasm for the web/desktop/mobile UI.
+[profile.wasm-release]
+inherits = "release"
+opt-level = 3
+lto = "fat"

@@ -1,0 +1,23 @@
+[package]
+name = "mirrorlab"
+description = "MirrorLab native shell for desktop (macOS, Windows, Linux) and mobile (Android, iOS)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "mirrorlab_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+mirror-core = { workspace = true, features = ["parallel", "raw"] }
+serde.workspace = true
+serde_json.workspace = true
+base64 = "0.22"

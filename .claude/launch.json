@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "mirrorlab-web", "runtimeExecutable": "sh", "runtimeArgs": ["-c", "cd app && exec trunk serve --dist dist-dev"], "port": 1420 }
+  ]
+}

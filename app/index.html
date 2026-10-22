@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta name="theme-color" content="#0b0b0c" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="MirrorLab is a fast, private photo editor: RAW development, curves, color grading and looks, running entirely on your device." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>MirrorLab</title>
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/icon-192.png" />
+    <link rel="manifest" href="assets/manifest.webmanifest" />
+    <link data-trunk rel="css" href="style.css" />
+    <link data-trunk rel="copy-dir" href="assets" />
+    <link data-trunk rel="rust" data-bin="mirrorlab-app" data-wasm-opt="3" data-wasm-opt-params="--enable-bulk-memory --enable-bulk-memory-opt --enable-nontrapping-float-to-int --enable-sign-ext --enable-mutable-globals --enable-reference-types --enable-multivalue" data-type="main" />
+  </head>
+  <body>
+    <div id="boot" aria-hidden="true">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="12" cy="12" r="8.2" />
+        <path d="M12 3.8a8.2 8.2 0 0 0 0 16.4z" fill="currentColor" stroke="none" />
+      </svg>
+    </div>
+    <noscript>MirrorLab needs JavaScript and WebAssembly to run.</noscript>
+  </body>
+</html>

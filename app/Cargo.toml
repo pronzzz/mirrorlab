@@ -1,0 +1,33 @@
+[package]
+name = "mirrorlab-app"
+description = "MirrorLab user interface (Leptos, WebAssembly, WebGL2)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+mirror-core = { workspace = true, features = ["raw"] }
+serde.workspace = true
+serde_json.workspace = true
+leptos = { version = "0.8", features = ["csr"] }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+console_error_panic_hook = "0.1"
+half = "2"
+base64 = "0.22"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+  "Blob", "BlobPropertyBag", "CanvasRenderingContext2d", "DataTransfer", "DataTransferItem", "DataTransferItemList",
+  "Document", "DomRect", "DragEvent", "Element", "Event", "EventTarget", "File", "FileList", "HtmlAnchorElement",
+  "HtmlCanvasElement", "HtmlElement", "HtmlInputElement", "ImageBitmap", "ImageBitmapOptions", "ImageData",
+  "ImageOrientation", "KeyboardEvent", "Location", "MediaQueryList", "Navigator", "PointerEvent", "PremultiplyAlpha",
+  "ResizeObserver", "ResizeObserverEntry", "ResizeQuality", "Storage", "Url", "WebGl2RenderingContext", "WebGlBuffer",
+  "WebGlFramebuffer", "WebGlProgram", "WebGlShader", "WebGlTexture", "WebGlUniformLocation", "WebGlVertexArrayObject",
+  "WebGlContextAttributes", "WheelEvent", "Window", "ClipboardEvent", "Performance", "ColorSpaceConversion",
+  "CssStyleDeclaration", "HtmlImageElement", "OffscreenCanvas", "ShareData", "Clipboard", "EventListener", "AddEventListenerOptions", "FilePropertyBag", "WebGlPowerPreference",
+]

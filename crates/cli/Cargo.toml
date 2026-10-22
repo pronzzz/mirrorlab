@@ -1,0 +1,18 @@
+[package]
+name = "mirrorlab-cli"
+description = "Batch-edit photos with MirrorLab looks from the command line"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "mirrorlab"
+path = "src/main.rs"
+
+[dependencies]
+mirror-core = { workspace = true, features = ["parallel", "raw"] }
+serde_json.workspace = true
+clap = { version = "4.5", features = ["derive"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "tiff", "webp"] }

@@ -1,0 +1,29 @@
+[package]
+name = "mirror-core"
+description = "MirrorLab image engine: adjustment model, tone/colour pipeline, curves, geometry, RAW decoding"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+
+[features]
+default = ["parallel", "raw"]
+# File decoding (TIFF, PNG, JPEG, WebP...).
+decode = ["dep:image"]
+# Multi-threaded CPU pipeline (native only).
+parallel = ["dep:rayon"]
+# Camera RAW decoding.
+raw = ["decode", "dep:rawler"]
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+rayon = { version = "1.10", optional = true }
+rawler = { version = "0.8", optional = true, default-features = false }
+half = "2"
+image = { version = "0.25", optional = true, default-features = false, features = ["png", "jpeg", "tiff", "webp", "bmp", "gif"] }
+
+# rawler pulls in uuid; in the browser it needs the JS randomness source.
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+uuid = { version = "1", features = ["js"] }
