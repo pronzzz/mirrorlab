@@ -11,3 +11,4 @@
 .DS_Store
 mirrorlab-out/
 /app/dist-dev
+/.claude/

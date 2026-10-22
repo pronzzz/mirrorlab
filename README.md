@@ -6,6 +6,24 @@ A fast, private photo editor — RAW development, tone curves, colour grading an
 ![Version](https://img.shields.io/badge/version-2.0.0-green.svg)
 ![Rust](https://img.shields.io/badge/Rust-2021-orange.svg)
 
+## Screenshots
+
+**Desktop & web** — the macOS, Windows and Linux apps run this same interface in a native window.
+
+![Editor with looks and the Light panel](docs/screenshots/desktop-editor.jpg)
+
+| Colour grading | Tone curve with before / after | Crop |
+|---|---|---|
+| ![Colour grading](docs/screenshots/desktop-grade.jpg) | ![Tone curve and before/after split](docs/screenshots/desktop-compare.jpg) | ![Crop](docs/screenshots/desktop-crop.jpg) |
+
+**Android**
+
+| Looks | Grade | Light |
+|---|---|---|
+| <img src="docs/screenshots/android-looks.jpg" width="260" alt="Looks on Android"> | <img src="docs/screenshots/android-grade.jpg" width="260" alt="Colour grading on Android"> | <img src="docs/screenshots/android-light.jpg" width="260" alt="Light panel on Android"> |
+
+<sub>Sample photo: “Sunrise at Peyto Lake, Alberta” by Adrian (aows) on Unsplash, CC0 via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sunrise_at_Peyto_Lake,_Alberta_(Unsplash).jpg).</sub>
+
 ## What's new in 2.0
 
 MirrorLab 2.0 is a ground-up rewrite of the original React/TypeScript app.
