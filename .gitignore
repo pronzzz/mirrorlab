@@ -12,3 +12,6 @@
 mirrorlab-out/
 /app/dist-dev
 /.claude/
+.vercel
+.env*
+/.tools

@@ -1,0 +1,8 @@
+target
+app/dist
+app/dist-dev
+src-tauri/gen/android/app/build
+src-tauri/gen/android/.gradle
+.vercel
+.tools
+.env*
