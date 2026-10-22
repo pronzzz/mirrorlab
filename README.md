@@ -89,6 +89,21 @@ cargo tauri dev
 cargo tauri build      # .app/.dmg, .msi/.exe, .deb/.AppImage/.rpm depending on the OS
 ```
 
+#### Windows installer from macOS
+
+Tauri can cross-build the Windows NSIS installer:
+
+```bash
+brew install nsis llvm
+cargo install cargo-xwin --locked
+rustup target add x86_64-pc-windows-msvc
+cd src-tauri
+PATH="/opt/homebrew/opt/llvm/bin:$PATH" LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 \
+  cargo tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc --bundles nsis
+```
+
+`LANG` must be a UTF-8 locale, otherwise Homebrew's `makensis` crashes with `std::bad_alloc`. The installer lands in `target/x86_64-pc-windows-msvc/release/bundle/nsis/`. It is unsigned, so Windows SmartScreen will warn on first run. The release workflow builds on a real Windows runner and also produces an MSI.
+
 ### Android
 
 Needs the Android SDK, NDK and Java 17.
